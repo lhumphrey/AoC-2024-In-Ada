@@ -27,6 +27,25 @@ procedure Main with SPARK_Mode is
      (for all I in First_Index (V) + 1 .. Last_Index (V) =>
            abs (V.Element (I) - V.Element (I - 1)) <= 3);
 
+   function Can_Be_Made_Safe (V : Natural_Vectors.Vector) return Boolean;
+
+   function Can_Be_Made_Safe (V : Natural_Vectors.Vector) return Boolean is
+   begin
+      for I in First_Index (V) .. Last_Index (V) loop
+         declare
+            V_mod : Natural_Vectors.Vector := Copy(V);
+         begin
+            V_mod.Delete (I);
+            if (Is_Decreasing (V_mod) or Is_Increasing (V_mod))
+              and Is_Gradual (V_mod)
+            then
+               return True;
+            end if;
+         end;
+      end loop;
+      return False;
+   end Can_Be_Made_Safe;
+
    Filename : String := "input.txt";
    File : File_Type;
    S : String (1 .. 256);
@@ -68,5 +87,19 @@ begin
    end loop;
 
    Put_Line("Part 1 number of safe reports: " & Num_Safe_Reports'Image);
+
+   Num_Safe_Reports := 0;
+   for E of Vec loop
+      if (Is_Increasing (E.all) or Is_Decreasing (E.all))
+        and Is_Gradual (E.all)
+      then
+         Num_Safe_Reports := Num_Safe_Reports + 1;
+      elsif Can_Be_Made_Safe (E.all) then
+         Num_Safe_Reports := Num_Safe_Reports + 1;
+      end if;
+   end loop;
+
+   Put_Line("Part 2 number of reports that can be made safe: " &
+              Num_Safe_Reports'Image);
 
 end;
