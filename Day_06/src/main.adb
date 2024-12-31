@@ -125,10 +125,7 @@ procedure Main is
 
       if Next_Pose.Row = 0 then
          return False;
-      --elsif Past_Poses.Contains (Next_Pose) then
-      --   return True;
       else
-         --Past_Poses.Insert (Next_Pose);
          return Can_Reach_Loop (Next_Pose, Has_Obstacle, Past_Poses);
       end if;
    end Can_Reach_Loop;
@@ -256,7 +253,6 @@ begin
       for J in Coordinate'Range loop
          if Placed_Obstacle (I, J) then
             Total_Obstacles_Placed := Total_Obstacles_Placed + 1;
-            Put_Line (I'Image & ", " & J'Image);
          end if;
       end loop;
    end loop;
@@ -264,6 +260,4 @@ begin
    Put_Line ("Unique Positions Visited: " & Total_Visited'Image);
    Put_Line ("Total Obstacles Placed: " & Total_Obstacles_Placed'Image);
 
-   -- 1776 is too high
-   -- Derek's code gives 1711
 end;
