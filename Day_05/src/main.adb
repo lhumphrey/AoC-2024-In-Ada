@@ -3,7 +3,7 @@ with Ada.Containers.Vectors;
 with Ada.Containers.Hashed_Maps;
 with GNAT.Regpat; use GNAT.Regpat;
 
-procedure Main with SPARK_Mode is
+procedure Main is
 
    package Natural_Vectors is new
      Ada.Containers.Vectors (Index_Type   => Positive,
@@ -28,7 +28,7 @@ procedure Main with SPARK_Mode is
 
    Filename : String := "input.txt";
    File : File_Type;
-   S : String (1 .. 80);
+   S : String (1 .. 128);
    S_Last : Natural := 0;
    Page_Map : Vector_Acc_Hashed_Maps.Map;
    N1, N2 : Positive;
