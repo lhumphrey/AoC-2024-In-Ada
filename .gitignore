@@ -1,5 +1,14 @@
+# Object directory
+**/obj/
+
 # Object file
 *.o
 
 # Ada Library Information
 *.ali
+
+# SPARK object directory
+**/sparklib_obj/
+
+# Executable directory
+**/bin/
