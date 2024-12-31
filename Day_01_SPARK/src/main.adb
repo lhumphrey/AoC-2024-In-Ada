@@ -20,7 +20,7 @@ procedure Main with SPARK_Mode, Always_Terminates => False is
    Last_Idx, Idx : Natural;
    Num : Integer;
    Total_Dist, Sim_Score : Integer := 0;
-   Vec1, Vec2 : Vector (1001);
+   Vec1, Vec2 : Vector (1501);
 begin
 
    begin
@@ -54,13 +54,13 @@ begin
          if Length (Vec1) < Vec1.Capacity then
             Append (Vec1, Num);
          else
-            Put_Line ("Error: Exceeded capacity of Vec1");
+            Put_Line ("Error: Capacity of Vec1 would have been exceeded.");
             return;
          end if;
          if Idx < Natural'Last then
             Idx := Idx + 1;
          else
-            Put_Line ("Error: Idx overflowed.");
+            Put_Line ("Error: Idx would have overflowed.");
             return;
          end if;
          begin
@@ -73,7 +73,7 @@ begin
          if Length (Vec2) < Vec2.Capacity and then Num in Input'Range then
             Append (Vec2, Num);
          else
-            Put_Line ("Error: Exceeded capacity of Vec2.");
+            Put_Line ("Error: Capacity of Vec2 would have been exceeded.");
             return;
          end if;
       end if;
@@ -91,7 +91,7 @@ begin
       then
          Total_Dist := Total_Dist + abs (Element (Vec1, I) - Element (Vec2, I));
       else
-         Put_Line ("Error: Total_Dist overflowed.");
+         Put_Line ("Error: Total_Dist would have overflowed.");
          return;
       end if;
    end loop;
@@ -115,7 +115,7 @@ begin
             if Sim_Score <= Integer'Last - (E * Count) then
                Sim_Score := Sim_Score + (E * Count);
             else
-               Put_Line ("Error: Sim_Score overflowed.");
+               Put_Line ("Error: Sim_Score would have overflowed.");
                return;
             end if;
          end;
