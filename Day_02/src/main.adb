@@ -2,7 +2,7 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Containers.Vectors;
 
-procedure Main with SPARK_Mode is
+procedure Main is
 
    package Natural_Vectors is new
      Ada.Containers.Vectors (Index_Type => Positive, Element_Type => Natural);
