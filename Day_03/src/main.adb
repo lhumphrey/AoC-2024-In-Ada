@@ -3,7 +3,7 @@ with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Containers.Vectors;
 with GNAT.Regpat; use GNAT.Regpat;
 
-procedure Main with SPARK_Mode is
+procedure Main is
 
    type Token_Type is (On, Off, Mul, EOL);
    Current_Token : Token_Type;
@@ -18,7 +18,7 @@ procedure Main with SPARK_Mode is
 
    Filename : String := "input.txt";
    File : File_Type;
-   S : String (1 .. 4000);
+   S : String (1 .. 4096);
    Idx, Last_Idx : Natural;
    Total1, Total2 : Natural := 0;
 
